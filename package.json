@@ -1,0 +1,15 @@
+{
+  "name": "reactDemo",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "griddle-react": "^0.6.1",
+    "meteor-node-stubs": "~0.2.0",
+    "react": "^15.3.2",
+    "react-addons-pure-render-mixin": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "reactable": "^0.14.0"
+  }
+}
