@@ -5,6 +5,7 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "griddle-react": "^0.6.1",
     "meteor-node-stubs": "~0.2.0",
     "react": "^15.3.2",
