@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 
 import ParentChildTable from '../imports/ParentChildTable.jsx';
-import {table} from '/imports/sample-table.js';
+import {table, table2} from '/imports/sample-table.js';
 
 
 Meteor.startup(() => {
@@ -11,7 +11,6 @@ Meteor.startup(() => {
   	<ParentChildTable
   		data = {table}
   		indentParams = {['a', 'b']}
-  		handleClick = {() => { console.log(" row ")}}
   		rowDisplayName = "TableRowFormat"
   		>
   		<TableRowFormat />

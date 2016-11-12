@@ -25,7 +25,6 @@ export default class ParentChildTable extends Component {
 		return React.cloneElement(comp, { ...r, key: r.id+'_'+i })
 	}
 	render() {
-		console.log(this.state.table, this.props.data, " <<<< TABLE && DATA")
 		const header = React.createElement('h1', null, "Table Container")
 		let row = [];
 		let comp = this.props.children;
