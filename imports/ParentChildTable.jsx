@@ -21,26 +21,33 @@ export default class ParentChildTable extends Component {
 		const pageStart = i * this.state.itemLimit;
 		this.setState({ pageStart })
 	}
-	renderRow(r, i) {
-		return <tr key={r.id+'_'+i}>
-			<td onClick={() => console.log(r.a, " <==== ")}>{r.a}</td>
-			<td>{r.b}</td>
-			<td>{r.c}</td>
-		</tr>;
+	renderRow(r, i, comp) {
+		return React.cloneElement(comp, { ...r, key: r.id+'_'+i })
 	}
 	render() {
-		h1 = React.createElement('h1', null, "Table Container")
-		row = [];
+		console.log(this.state.table, this.props.data, " <<<< TABLE && DATA")
+		const header = React.createElement('h1', null, "Table Container")
+		let row = [];
+		let comp = this.props.children;
+		let displayChildren = [];
+		if(this.props.children.length){
+			comp = _.find(this.props.children, (c) => {
+				return c.type.displayName == this.props.rowDisplayName
+			});
+			displayChildren.push(_.find(this.props.children, (c) => {
+				return c.type.displayName != this.props.rowDisplayName
+			}));
+		}
 		for(let i = 0; i < this.state.itemLimit && i < this.state.table.length ; i++) {
-			row.push(this.renderRow(this.state.table[this.state.pageStart + i], i))
+			row.push(this.renderRow(this.state.table[this.state.pageStart + i], i, comp))
 		}
 		return (
 			<div className="container">
 				<header>
-					{ h1 }
+					{ header }
         </header>
         <table className="table">
-					{this.props.children}
+					{displayChildren}
 					<tbody>{ row }</tbody>
 				</table>
 				<Pagination 

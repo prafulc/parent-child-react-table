@@ -11,23 +11,47 @@ Meteor.startup(() => {
   	<ParentChildTable
   		data = {table}
   		indentParams = {['a', 'b']}
+  		handleClick = {() => { console.log(" row ")}}
+  		rowDisplayName = "TableRowFormat"
   		>
+  		<TableRowFormat />
   		<thead>
   			<tr>
-	  			<th>1</th>
-	  			<th>2</th>
-	  			<th>3</th>
-	  		</tr>
+  				<th>1. </th>
+  				<th>2. </th>
+  				<th>3. </th>
+  			</tr>
   		</thead>
-  		<tfoot>
-  			<tr>
-	  			<th>1</th>
-	  			<th>2</th>
-	  			<th>3</th>
-	  		</tr>
-  		</tfoot>
   	</ParentChildTable>, 
   	document.getElementById('render-target')
   );
 });
 
+class TableRowFormat extends React.Component {
+	handleClick(e, d){
+		console.log(d, "<<<<<< Click Handeled")
+	}
+	render(){
+		return (
+			<tr>
+				<td><input type="checkbox" onClick={(e)=>this.handleClick(e, this.props)} /></td>
+				<td>
+					<div>
+						{this.props.level}
+						<span>{this.props.c}</span>
+						<div>{this.props.a}</div>
+					</div>
+				</td>
+				<td>{this.props.b}</td>
+			</tr>
+		)
+	}
+}
+
+TableRowFormat.displayName = "TableRowFormat";
+TableRowFormat.defaultProps = {
+	a: "default a",
+	b: "default b",
+	c: "default c",
+	level: 0
+}
