@@ -10,8 +10,9 @@ Meteor.startup(() => {
   render(
   	<ParentChildTable
   		data = {table}
-  		indentParams = {['a', 'b']}
   		rowDisplayName = "TableRowFormat"
+  		formatType = "parentChild"
+  		chKey = "child"
   		>
   		<TableRowFormat />
   		<thead>

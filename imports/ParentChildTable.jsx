@@ -8,18 +8,22 @@ export default class ParentChildTable extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			table: [],
-			pageStart: 0,
+			page: 0,
 			itemLimit: 5,
 		}
+		this.table = createJson(this.props.data, this.props.chKey);
 		this.handlePageChange = this.handlePageChange.bind(this);
 	}
 	componentDidMount() {
-		this.setState({ table: createJson(this.props.data, this.props.indentParams)})
+		// this.setState({ table: createJson(this.props.data, this.props.chKey)})
+		// this.table = createJson(this.props.data, this.props.chKey)
+	}
+	componentWillReceiveProps(nextProps){
+		this.table = createJson(nextProps.data, nextProps.chKey);
 	}
 	handlePageChange(i){
-		const pageStart = i * this.state.itemLimit;
-		this.setState({ pageStart })
+		const page = i;
+		this.setState({ page })
 	}
 	renderRow(r, i, comp) {
 		return React.cloneElement(comp, { ...r, key: r.id+'_'+i })
@@ -37,8 +41,8 @@ export default class ParentChildTable extends Component {
 				return c.type.displayName != this.props.rowDisplayName
 			}));
 		}
-		for(let i = 0; i < this.state.itemLimit && i < this.state.table.length ; i++) {
-			row.push(this.renderRow(this.state.table[this.state.pageStart + i], i, comp))
+		for(let i = 0; i < this.state.itemLimit && i < this.table.length ; i++) {
+			row.push(this.renderRow(this.table[(this.state.page * this.state.itemLimit) + i], i, comp))
 		}
 		return (
 			<div className="container">
@@ -50,8 +54,8 @@ export default class ParentChildTable extends Component {
 					<tbody>{ row }</tbody>
 				</table>
 				<Pagination 
-					currentPage = {this.state.pageStart / this.state.itemLimit}
-					pages = {Math.ceil(this.state.table.length / this.state.itemLimit)}
+					currentPage = {this.state.page}
+					pages = {Math.ceil(this.table.length / this.state.itemLimit)}
 					handlePageChange = {this.handlePageChange}
 					/>
       </div>

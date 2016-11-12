@@ -1,14 +1,10 @@
-var json = []
-export default function createJson(table, p, space = ''){
+let json = []
+export default function createJson(table, chKey, level = 0){
   _.each(table, (t, k) => {
-    _.each(p, (i) => {
-      t[i] = space + t[i];
-    })
-    json.push(_.omit(t, ['child']))
-    if(_.has(t, "child"))
-      return createJson(t.child, p, `${space}|-`);
-    else 
-      return t
+    t.level = level;
+    json.push(_.omit(t, [chKey]))
+    if(_.has(t, chKey))
+      createJson(t.child, chKey, level+1);
   })
   return json;
 }
