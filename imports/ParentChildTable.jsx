@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import createJson from './createJson.js';
+import {convertParentChildJSON} from './convertJson.js';
 // import {table} from './sample-table.js';
 
 export default class ParentChildTable extends Component {
@@ -11,7 +11,9 @@ export default class ParentChildTable extends Component {
 			page: 0,
 			itemLimit: 5,
 		}
-		this.table = createJson(this.props.data, this.props.chKey);
+		this.table = [];
+		if(props.formatType = "parentChild") 
+			this.table = convertParentChildJSON(props.data, props.chKey);
 		this.handlePageChange = this.handlePageChange.bind(this);
 	}
 	componentDidMount() {

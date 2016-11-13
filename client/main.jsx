@@ -37,8 +37,7 @@ class TableRowFormat extends React.Component {
 				<td><input type="checkbox" onClick={(e)=>this.handleClick(e, this.props)} /></td>
 				<td>
 					<div>
-						{this.props.level}
-						<span>{this.props.c}</span>
+						<em>{this.props.level} - <span>{this.props.c}</span></em>
 						<div>{this.props.a}</div>
 					</div>
 				</td>

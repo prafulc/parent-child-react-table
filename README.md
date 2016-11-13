@@ -13,8 +13,8 @@ This table will list like:
 
 
 :heavy_check_mark: There will be 3 cases of input data
-* JSON Array in parent child form :x: :construction:
-* JSON Array with parent Id in it :x:
+* JSON Array in parent child form :heavy_check_mark: 
+* JSON Array with parent Id in it :x: :construction:
 * JSON Array with children ID in parent :x:
 
 All cases are under development :construction:
