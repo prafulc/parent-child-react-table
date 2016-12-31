@@ -23,7 +23,11 @@ export default class ParentChildTable extends Component {
 		// this.table = createJson(this.props.data, this.props.chKey)
 	}
 	componentWillReceiveProps(nextProps){
-		this.table = createJson(nextProps.data, nextProps.chKey);
+		if(nextProps.formatType = "parentChild") {
+			this.table = convertParentChildJSON(nextProps.data, nextProps.chKey);
+		} else if(nextProps.formatType = "parentId") {
+			this.table = convertJSONWithParent(nextProps.data, nextProps.idKey, nextProps.parentKey, nextProps.mainParentValue);
+		}
 	}
 	handlePageChange(i){
 		const page = i;
