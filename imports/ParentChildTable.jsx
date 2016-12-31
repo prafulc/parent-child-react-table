@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import {convertParentChildJSON} from './convertJson.js';
-// import {table} from './sample-table.js';
+import { convertParentChildJSON, convertJSONWithParent } from './convertJson.js';
 
 export default class ParentChildTable extends Component {
 	constructor(props){
@@ -12,8 +11,11 @@ export default class ParentChildTable extends Component {
 			itemLimit: 5,
 		}
 		this.table = [];
-		if(props.formatType = "parentChild") 
+		if(props.formatType = "parentChild") {
 			this.table = convertParentChildJSON(props.data, props.chKey);
+		} else if(props.formatType = "parentId") {
+			this.table = convertJSONWithParent(props.data, props.idKey, props.parentKey, props.mainParentValue);
+		}
 		this.handlePageChange = this.handlePageChange.bind(this);
 	}
 	componentDidMount() {
@@ -63,6 +65,10 @@ export default class ParentChildTable extends Component {
       </div>
     );
   }
+}
+
+ParentChildTable.defaultProps = {
+	mainParentValue: undefined
 }
 
 class Pagination extends Component {

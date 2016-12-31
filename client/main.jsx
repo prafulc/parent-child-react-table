@@ -7,12 +7,32 @@ import {table, table2} from '/imports/sample-table.js';
 
 
 Meteor.startup(() => {
-  render(
+  /*render(
   	<ParentChildTable
   		data = {table}
   		rowDisplayName = "TableRowFormat"
   		formatType = "parentChild"
   		chKey = "child"
+  		>
+  		<TableRowFormat />
+  		<thead>
+  			<tr>
+  				<th>1. </th>
+  				<th>2. </th>
+  				<th>3. </th>
+  			</tr>
+  		</thead>
+  	</ParentChildTable>, 
+  	document.getElementById('render-target')
+  );*/
+  render(
+  	<ParentChildTable
+  		data = {table2}
+  		rowDisplayName = "TableRowFormat"
+  		formatType = "parentId"
+  		idKey = "id"
+  		parentKey = "parent"
+  		mainParentValue = {undefined}
   		>
   		<TableRowFormat />
   		<thead>

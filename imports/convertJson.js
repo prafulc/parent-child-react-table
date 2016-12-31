@@ -9,4 +9,16 @@ function convertParentChildJSON(table, chKey, level = 0, json = [] ){
   return json;
 }
 
-export { convertParentChildJSON };
+function convertJSONWithParent(data, idkey, parentKey, parent, level = 0, json=[]) {
+  data
+    .filter(d => d[parentKey] === parent)
+    .forEach(e => {
+      e.level = level;
+      json.push(e);
+      convertJSONWithParent(data, idkey, parentKey, e[idkey], level+1, json);
+    });
+  return json;
+}
+
+
+export { convertParentChildJSON, convertJSONWithParent };
