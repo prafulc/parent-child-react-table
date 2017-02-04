@@ -8,9 +8,16 @@
     "bootstrap": "^3.3.7",
     "griddle-react": "^0.6.1",
     "meteor-node-stubs": "~0.2.0",
-    "react": "^15.3.2",
+    "react": "^15.4.2",
     "react-addons-pure-render-mixin": "^15.3.2",
-    "react-dom": "^15.3.2",
+    "react-dom": "^15.4.2",
     "reactable": "^0.14.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^18.0.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "jest": "^18.1.0",
+    "react-test-renderer": "^15.4.2"
   }
 }

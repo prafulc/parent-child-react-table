@@ -2,9 +2,8 @@ import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 
-import ParentChildTable from '../imports/ParentChildTable.jsx';
+import ParentChildTable from 'parentchildtable';
 import {table, table2} from '/imports/sample-table.js';
-
 
 Meteor.startup(() => {
   /*render(
