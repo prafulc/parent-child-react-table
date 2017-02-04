@@ -11,6 +11,7 @@
     "react": "^15.4.2",
     "react-addons-pure-render-mixin": "^15.3.2",
     "react-dom": "^15.4.2",
+    "parentchildtable": "^0.1.0",
     "reactable": "^0.14.0"
   },
   "devDependencies": {
